@@ -6,7 +6,7 @@ To set up your working environment for the project, you will have to perform the
 
     npm install
 
-in the project's root directory (where this <span style=`font-family:Lucida Sans Typewriter`>README</span> file is located). 
+in the project's root directory `README` file is located). 
 
 Use 
 

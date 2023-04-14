@@ -45,13 +45,13 @@ Here is a first overview of what the three tasks entail, a detailed description 
 
 2. In the second task you will code your first `form`. This is the biggest of the three tasks. In our form, the user will be able to edit the data of one specific movie. 
     
-    For this to work you will first add a new GET endpoint - namely `GET /movies/:imdbID` - to request the data of a single movie from the server. 
+    For this to work you will first add a new GET endpoint - namely `GET /movies/:imdbID` - to request the data for a single movie from the server. 
     
     Then, you will add navigation from the overview page `index.html` to the edit page `edit.html`. This navigation is triggered when the user clicks the `Edit` button of a movie.
 
-    Finally, we will add the `Save` and `Cancel` buttons. The `Save` button will be implemented in task 3 (for the moment is does nothing), the `Cancel` button navigates back to the `index.html` file, our movie overview page.
+    Finally, we will add the `Save` and `Cancel` buttons. The `Save` button will be implemented in task 3 (for the moment it does nothing), the `Cancel` button navigates back to `index.html`, our movie overview page.
 
-3. The third task finally adds the code to update the movie data entered by the user. This is triggered when the user clicks the `Save` button in our movie form. Saving a modified movie involves another endpoint on the server, the `PUT /movies:/imdbID` endpoint, which you will also implement.
+3. The third task finally adds the code to update the movie data modified by the user. This is triggered when the user clicks the `Save` button in our movie form. Saving a modified movie involves another endpoint on the server, the `PUT /movies:/imdbID` endpoint, which you will also implement.
 
 ### Checking your implementation
 As in exercise 1, to check whether your implementation is working as expected you **run** Cypress end-to-end tests. These tests are the exact same tests we will use to assess your implementation once you commit it to the GitHub repository. In this exercise there are a total of 10 tests, each for one of the subtasks.
@@ -101,11 +101,11 @@ Here is what you need to do for the three subtasks to pass:
  
  Refer to the material in the Moodle course for details.
 
-**1.2.** Add the code to the `GET /movies` endpoint that you already are familiar with from the first exercise. Make sure you return all the movies of the model as an array. This can be accomplished using [Object.values(...)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Object/values).
+**1.2.** Re-implement the endpoint `GET /movies` that you already are familiar with from the first exercise. Make sure you return all the movies of the model as an array. This can be accomplished using [Object.values(...)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Object/values).
 
 **1.3.** Copy the code you wrote in exercise 1 to render the elements to the right place in `index.js`, then you should be fine.
 
-**Caution:** For this test to pass, you will have to render the `Edit` button that is described in Subtask 2.2. The `button` does not have to do anything just yet, but it has to exist for this test to pass...
+**Caution:** For this test to pass, you will have to extend your code from exercise 1 to render the `Edit` button that is described in Subtask 2.2. The `button` does not have to do anything just yet, but it has to exist for this test to pass...
 
 ### Task 2: Add a form to edit a movie
 
@@ -122,9 +122,8 @@ Depending on whether you find the movie with the given `imdbID` in the model, yo
 **2.2.** Navigate between `index.html` and `edit.html`.
 
 For this to work, you will have to
-+ create the `edit.html` page and add a basic `form` (for details refer to the end of this section)
 + a button on the overview page (`index.html`) that triggers the navigation to the `edit.html` page and 
-+ another button on the `edit.html` page triggering navigation back to the `index.html`.
++ create the `edit.html` page and add another button triggering navigation back to the `index.html`. For details refer to the end of this section!
 
 Navigating to another URL can be done using the following JavaScript snippet:
 
@@ -156,11 +155,11 @@ buttonElement.onclick = function() {
 
 To satisfy the test, please make sure to wrap the `button` element in a `p` and add this paragraph right after the `h1` element which contains the title of the movie.
 
-In the other direction, that is, from the `edit.html` back to `index.html` you can use the same concept. Here, your HTML code is static and there is no need for a parameter, so it's simpler. Still, you have to add a `form` element to `edit.html` containing a `button` element with the Text *Cancel* and a `onclick` attribute containing the navigation code.
+In the other direction, that is, from the `edit.html` back to `index.html` you can use the same concept. Here, your HTML code is static and there is no need for a parameter, so it's simpler. Still, you have to add a `button` element to `edit.html` with the Text *Cancel* and a `onclick` attribute containing the navigation code.
 
-**2.3.** Now you extend the HTML page `edit.html` that you added in 2.2.
+**2.3.** Now you extend the HTML page `edit.html` that you added in **2.2.**
 
-This page already contains a `form` element. Now you will att elements for all the properties of a movie. A form can contain different HTML elements. In our case, we are going to use
+You add a `form` element (and move the *Cancel* `button` inside the form). Now you will add elements for all the properties of a movie to that `form` elemtn. A form can contain different HTML elements. In our case, we are going to use
 + `input` elements for strings, numbers, dates, and also for the lists we have of actors, writers and directors
 + a `select` element for the genres,
 + a `textarea` for the plot. 
@@ -197,6 +196,8 @@ Here are some more details:
     Make sure that each `label` has a `for` attribute which references the `id` attribute of the `input` element it belongs to.
 
     A special case is the `input` element for the `imdbID`. Since the user is not going to be able to edit the id, we will use `type="hidden"`. There is also no need for a `div` and a `label`, but be sure to add the `id` attribute.
+
+    See the Moodle course for additional material on how to use a `form`.
 
 + We are only going to use one `select` element, namely for the list of genres. For each genre, the `select` element will contains an `option` child element. The `select` element has not `type` attribute like the `input` element, but you need to configure the `id` attribute on this element also. Add the following 24 genres as options: `Action`, `Adventure`, `Animation`, `Biography`, `Comedy`, `Crime`, `Documentary`, `Drama`, `Family`, `Fantasy`, `Film Noir`, `History`, `Horror`, `Music`, `Musical`, `Mystery`, `Romance`, `Sci-Fi`, `Short Film`, `Sport`, `Superhero`, `Thriller`, `War`, `Western`.<br>
 
@@ -249,4 +250,4 @@ If your checks finds that the `imdbID` does not exist, then you **add** the movi
 
 On the client side, in function `putMovie()` in `edit.js`, you will need to send the movie data that `getMovie()` collects from the form to the newly creates endpoint `PUT /movies/:imdbID`. Some code is already there, but you will have to find the missing pieces on yourself!
 
-You have finished the seconds exercise: **Congratulations, all tests pass!** 
+You have finished the second exercise: **Congratulations, all tests pass!** 

@@ -216,7 +216,7 @@ describe("Testing Exercise 2", () => {
           cy.location("pathname").should("eq", "/edit.html");
           cy.location("search").should("eq", `?imdbID=${movie.imdbID}`);
 
-          cy.get('form button:contains("Cancel")').click();
+          cy.get('button:contains("Cancel")').click();
 
           cy.location("pathname").should("eq", "/index.html");
         });

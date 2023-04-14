@@ -122,8 +122,8 @@ Depending on whether you find the movie with the given `imdbID` in the model, yo
 **2.2.** Navigate between `index.html` and `edit.html`.
 
 For this to work, you will have to
-+ a button on the overview page (`index.html`) that triggers the navigation to the `edit.html` page and 
-+ create the `edit.html` page and add another button triggering navigation back to the `index.html`. For details refer to the end of this section!
++ add a button for each movie on the overview page (`index.html`) that triggers the navigation to the `edit.html` page and 
++ create the `edit.html` page where you add another button triggering navigation back to the `index.html`. For details refer to the end of this section!
 
 Navigating to another URL can be done using the following JavaScript snippet:
 

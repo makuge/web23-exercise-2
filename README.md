@@ -122,7 +122,7 @@ Depending on whether you find the movie with the given `imdbID` in the model, yo
 **2.2.** Navigate between `index.html` and `edit.html`.
 
 For this to work, you will have to
-+ add a button for each movie on the overview page (`index.html`) that triggers the navigation to the `edit.html` page and 
++ add a button for each movie on the overview page (`index.html`) that triggers the navigation to the `edit.html` page for that specific movie and 
 + create the `edit.html` page where you add another button triggering navigation back to the `index.html`. For details refer to the end of this section!
 
 Navigating to another URL can be done using the following JavaScript snippet:
@@ -131,9 +131,9 @@ Navigating to another URL can be done using the following JavaScript snippet:
     location.href = "edit.html?imdbID=tt1234567"
 ```
 
-In this example, the key-value pair after the page name (`imdbID=tt1234567`) is a [query parameter](https://en.wikipedia.org/wiki/Query_string), that we pass to the `edit.html` page. In `edit.js` we will use this parameter to load the movie with the specified id - in this example `tt1234567`.
+In this example, the key-value pair after the page name (`imdbID=tt1234567`) is a [query parameter](https://en.wikipedia.org/wiki/Query_string), that we pass to the `edit.html` page. We will later use that parameter to load the movie with the specified id - in this example `tt1234567`.
 
-The tricky part is that you will have to add this code dynamically to a `button` element in your DOM manipulation code from exercise 1.
+The tricky part for now is that you will have to add this code dynamically to a `button` element in your DOM manipulation code from exercise 1.
 
 This then will look something like this:
 ```js
@@ -222,7 +222,11 @@ Here are some more details:
 There one last missing puzzle piece, the buttons. There are two of them:
 + The `button` *Save* is going to call the JavaScript function `putMovie()`. You will need to look up how to use an onclick attribute.
 
-So much for the construction of the form. If everything is set up correctly, the movie data should now be shown in the form :).
+So much for the construction of the form.
+
+Finally, you will have to include `edit.js` to actually load the movie data from the server and set it to the form!
+
+If everything is set up correctly, the movie data should now be shown in the form :).
 
 **2.4** Make sure to reference the given `edit.css` file in `edit.html` to make this subtask work.
 

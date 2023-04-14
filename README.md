@@ -113,7 +113,7 @@ In the second task we add a form to edit an individual movie. For this to work, 
 
 **2.1.** Implement the `GET /movies/:imdbID` endpoint. Here we work with a **path parameter** for the first time. 
 
-The client passes the `imdbId` of the movie as a path parameter named `imdbID` in the corresponding endpoint in `server.js`. Now you can access the parameter using `reg.params.imdbID`, so you can look up the requested movie in the movie model.
+The client passes the `imdbId` of the movie as a path parameter named `imdbID` in the corresponding endpoint in `server.js`. Now you can access the parameter in your endpoint code using `reg.params.imdbID`, using it to look up the requested movie in the movie model.
 
 Depending on whether you find the movie with the given `imdbID` in the model, you do two things: Either you
 + find the movie. Send it to the client using `res.send(...)`
@@ -154,7 +154,7 @@ Do satisfy the test, please make sure to wrap the `button` element in a `p` and 
 
 In the other direction, that is, from the `edit.html` back to `index.html` you can use the same concept. Here, your HTML code is static and there is no need for a parameter, so it's simpler. Still, you have to add a `form` element to `edit.html` containing a `button` element with the Text *Cancel* and a `onclick` attribute containing the navigation code.
 
-**2.3.** Now you extends the HTML page `edit.html` that you added in 2.2.
+**2.3.** Now you extend the HTML page `edit.html` that you added in 2.2.
 
 This page already contains a `form` element. Now you will att elements for all the properties of a movie. A form can contain different HTML elements. In our case, we are going to use
 + `input` elements for strings, numbers, dates, and also for the lists we have of actors, writers and directors

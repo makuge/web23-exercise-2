@@ -1,0 +1,13 @@
+/* Teil 3?. Das Basisstylesheet wird eingefügt und in 
+   diesem Sheet und im Sheet der Hauptseite verwendet */
+@import url(base.css);
+
+input,
+select,
+textarea {
+  width: 100%;
+}
+
+div {
+  margin: 4px 0px;
+}

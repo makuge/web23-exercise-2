@@ -223,7 +223,7 @@ describe("Testing Exercise 2", () => {
     });
   });
 
-  it("2.3. Movie form rendering is correctly and movie data is set correctly", () => {
+  it("2.3. Movie form rendering is correct and movie data is set correctly", () => {
     cy.request("/movies").then((response) => {
       const movie = response.body[0];
 

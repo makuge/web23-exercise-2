@@ -142,15 +142,19 @@ This then will look something like this:
 const movie = ... // The movie you are currently adding element for
 const articleElement = ... // The article element you created for that movie
 
-// New code
+// New code starting here
 const buttonElement = document.createElement('button')
 buttonElement.textContent = 'Edit'
 buttonElement.onclick = function() {
     location.href = 'edit.html?imdbID=' + movie.imdbID
 }
+
+/*... and then you wrap the button element in a p element and 
+      add the p element after the h1 element that contains
+      the movie's title...*/
 ```
 
-Do satisfy the test, please make sure to wrap the `button` element in a `p` and add this paragraph right after the `h1` element which contains the title of the movie.
+To satisfy the test, please make sure to wrap the `button` element in a `p` and add this paragraph right after the `h1` element which contains the title of the movie.
 
 In the other direction, that is, from the `edit.html` back to `index.html` you can use the same concept. Here, your HTML code is static and there is no need for a parameter, so it's simpler. Still, you have to add a `form` element to `edit.html` containing a `button` element with the Text *Cancel* and a `onclick` attribute containing the navigation code.
 

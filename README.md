@@ -101,7 +101,9 @@ Here is what you need to do for the three subtasks to pass:
 
 **1.2.** Add the code to the `GET /movies` endpoint that you already are familiar with from the first exercise. Make sure you return all the movies of the model as an array. This can be accomplished using [Object.values(...)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Object/values).
 
-**1.3.** Copy the code you wrote in exercise 1 to render the elements to the right place in `index.js`, then you should be fine. **Caution: ** For this test to pass, you will have to render the `Edit` button that is described in Subtask 2.2. The `button` does not have to do anything just yet, but it has to exist for this test to pass...
+**1.3.** Copy the code you wrote in exercise 1 to render the elements to the right place in `index.js`, then you should be fine.
+
+**Caution:** For this test to pass, you will have to render the `Edit` button that is described in Subtask 2.2. The `button` does not have to do anything just yet, but it has to exist for this test to pass...
 
 ### Task 2: Add a form to edit a movie
 

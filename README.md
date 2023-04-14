@@ -97,7 +97,9 @@ Here is what you need to do for the three subtasks to pass:
     imdbRating: 8.2,
   }
 ```
- Make sure to `export` the complete movie object from the `movie-model.js` module, so that `server.js` is able to find it. The import of the `movie-model.js` is already included in the skeleton code. Refer to the material in the Moodle course for details.
+ Make sure to `export` the complete movie object from the `movie-model.js` module, so that `server.js` is able to find it. The import of the `movie-model.js` is already included in the skeleton code. 
+ 
+ Refer to the material in the Moodle course for details.
 
 **1.2.** Add the code to the `GET /movies` endpoint that you already are familiar with from the first exercise. Make sure you return all the movies of the model as an array. This can be accomplished using [Object.values(...)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Object/values).
 
@@ -111,20 +113,18 @@ In the second task we add a form to edit an individual movie. For this to work, 
 
 **2.1.** Implement the `GET /movies/:imdbID` endpoint. Here we work with a **path parameter** for the first time. 
 
-The client passes the `imdbId` of the movie as a path parameter, that we name `imdbID` in `server.js`. Now you can access the parameter using `reg.params.imdbID`, you will look up the requested movie in the movie model.
+The client passes the `imdbId` of the movie as a path parameter named `imdbID` in the corresponding endpoint in `server.js`. Now you can access the parameter using `reg.params.imdbID`, so you can look up the requested movie in the movie model.
 
-Depending on whether you find the movie with the given `imdbID` in the model, you do two things
-+ You find the movie. Send it to the client using `res.send(...)`
-+ You do **not** find the movie. Send back a status code of 404 using `res.sendStatus(404)`
-
-See the material on Moodle for details of how implement this.
+Depending on whether you find the movie with the given `imdbID` in the model, you do two things: Either you
++ find the movie. Send it to the client using `res.send(...)`
++ do **not** find the movie. Send back a status code of 404 using `res.sendStatus(404)`
 
 **2.2.** Navigate between `index.html` and `edit.html`.
 
 For this to work, you will have to
-+ create the `edit.html` page
-+ a button on the overview page (`index.html`) navigating to the `edit.html` page and 
-+ another button on the `edit.html` page navigating back to the `index.html`.
++ create the `edit.html` page and add a basic `form` (for details refer to the end of this section)
++ a button on the overview page (`index.html`) that triggers the navigation to the `edit.html` page and 
++ another button on the `edit.html` page triggering navigation back to the `index.html`.
 
 Navigating to another URL can be done using the following JavaScript snippet:
 
@@ -132,11 +132,11 @@ Navigating to another URL can be done using the following JavaScript snippet:
     location.href = "edit.html?imdbID=tt1234567"
 ```
 
-In this example, the key-value pair after the page name (`imdbID=tt1234567`) is a query parameter, that we pass to the `edit.html` page. In `edit.js` we will use this parameter to load movie with the specified id - in this case `tt1234567`.
+In this example, the key-value pair after the page name (`imdbID=tt1234567`) is a [query parameter](https://en.wikipedia.org/wiki/Query_string), that we pass to the `edit.html` page. In `edit.js` we will use this parameter to load the movie with the specified id - in this example `tt1234567`.
 
 The tricky part is that you will have to add this code dynamically to a `button` element in your DOM manipulation code from exercise 1.
 
-This will look something like this:
+This then will look something like this:
 ```js
 // Code from exercise 1
 const movie = ... // The movie you are currently adding element for
@@ -152,11 +152,11 @@ buttonElement.onclick = function() {
 
 Do satisfy the test, please make sure to wrap the `button` element in a `p` and add this paragraph right after the `h1` element which contains the title of the movie.
 
-In the other direction, that is, from the `edit.html` back to `index.html` you can use the same concept. Here, your HTML code is static and there is no need for a parameter, so it's simpler.
+In the other direction, that is, from the `edit.html` back to `index.html` you can use the same concept. Here, your HTML code is static and there is no need for a parameter, so it's simpler. Still, you have to add a `form` element to `edit.html` containing a `button` element with the Text *Cancel* and a `onclick` attribute containing the navigation code.
 
-**2.3.** You add a new HTML page to the project: `edit.html`. 
+**2.3.** Now you extends the HTML page `edit.html` that you added in 2.2.
 
-This page contains a `form` element for all the properties of a movie. A form can contain different HTML elements. In our case, we are going to use
+This page already contains a `form` element. Now you will att elements for all the properties of a movie. A form can contain different HTML elements. In our case, we are going to use
 + `input` elements for strings, numbers, dates, and also for the lists we have of actors, writers and directors
 + a `select` element for the genres,
 + a `textarea` for the plot. 

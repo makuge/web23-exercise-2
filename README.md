@@ -159,12 +159,12 @@ In the other direction, that is, from the `edit.html` back to `index.html` you c
 
 **2.3.** Now you extend the HTML page `edit.html` that you added in **2.2.**
 
-You add a `form` element (and move the *Cancel* `button` inside the form). Now you will add elements for all the properties of a movie to that `form` elemtn. A form can contain different HTML elements. In our case, we are going to use
-+ `input` elements for strings, numbers, dates, and also for the lists we have of actors, writers and directors
+You add a `form` element (and move the *Cancel* `button` inside the form). Now you will add elements for all the properties of a movie to that `form` element. A form contains different HTML elements. In our case, we are going to use
++ `input` elements for strings, numbers, dates, and also for the lists we have of actors, writers and directors,
 + a `select` element for the genres,
 + a `textarea` for the plot. 
 
-In contrast to what we did in exercise 1, this time you write your HTML code **statically**, you do not create in using `document.createElement(...)`.
+In contrast to what we did in exercise 1, this time you write your HTML code **statically**, you do not create it using `document.createElement(...)` and `...append(...)`.
 
 Here are some more details:
 
@@ -172,7 +172,6 @@ Here are some more details:
     + choose an appropriate `type` attribute, e.g., `hidden`, `text`, `number`, `url` or `date`
     + set the `id` attribute of the element, for which you use the name of the property as **id**. 
     + for numerical `input` elements you may also need add the attributes `min`, `max`, and, if necessary, `step`.
-    <br><br>
 
     Examples for `input` elements are: 
     ```html
@@ -193,13 +192,15 @@ Here are some more details:
     </div>
     ```
 
-    Make sure that each `label` has a `for` attribute which references the `id` attribute of the `input` element it belongs to.
+    Also make sure that each `label` has a `for` attribute which references the `id` attribute of the `input` element it belongs to.
 
-    A special case is the `input` element for the `imdbID`. Since the user is not going to be able to edit the id, we will use `type="hidden"`. There is also no need for a `div` and a `label`, but be sure to add the `id` attribute.
+    A special case is the `input` element for the `imdbID`. Since the user is not going to be able to edit the `imdbID`, we will use `type="hidden"`. Because the element is not visible, there is also no need for a `div` and a `label`, but be sure to add the `id` attribute.
 
     See the Moodle course for additional material on how to use a `form`.
 
-+ We are only going to use one `select` element, namely for the list of genres. For each genre, the `select` element will contains an `option` child element. The `select` element has not `type` attribute like the `input` element, but you need to configure the `id` attribute on this element also. Add the following 24 genres as options: `Action`, `Adventure`, `Animation`, `Biography`, `Comedy`, `Crime`, `Documentary`, `Drama`, `Family`, `Fantasy`, `Film Noir`, `History`, `Horror`, `Music`, `Musical`, `Mystery`, `Romance`, `Sci-Fi`, `Short Film`, `Sport`, `Superhero`, `Thriller`, `War`, `Western`.<br>
++ We are only going to use one `select` element, namely for the list of genres. For each genre, the `select` element will contains an `option` child element. The `select` element has not `type` attribute like the `input` element, but you need to configure the `id` attribute on this element also. 
+
+    Add the following 24 genres as options: `Action`, `Adventure`, `Animation`, `Biography`, `Comedy`, `Crime`, `Documentary`, `Drama`, `Family`, `Fantasy`, `Film Noir`, `History`, `Horror`, `Music`, `Musical`, `Mystery`, `Romance`, `Sci-Fi`, `Short Film`, `Sport`, `Superhero`, `Thriller`, `War`, `Western`.<br>
 
     Make sure to add each of these values as the `value` attribute and as the text of the element, e.g., 
 
@@ -219,12 +220,13 @@ Here are some more details:
 
     The `textarea`, like `input` and `select` elements is wrapped in a `div` element and has its own `label`.
 
-There one last missing puzzle piece, the buttons. There are two of them:
-+ The `button` *Save* is going to call the JavaScript function `putMovie()`. You will need to look up how to use an onclick attribute.
+There is one last missing puzzle piece, the buttons. There are two of them at the end of the form:
++ The *Save* `button` is going to call the JavaScript function `putMovie()`. You will need to use the `onclick` attribute again.
++ The *Cancel* `button` is already there.
 
 So much for the construction of the form.
 
-Finally, you will have to include `edit.js` to actually load the movie data from the server and set it to the form!
+Finally, you will have to include `edit.js` in `edit.html` to actually load the movie data from the server and set it to the form!
 
 If everything is set up correctly, the movie data should now be shown in the form :).
 
@@ -232,15 +234,15 @@ If everything is set up correctly, the movie data should now be shown in the for
 
 ### Task 3: Store the modified movie data on the server
 
-Storing the data involves two use cases (although at the moment we only use one):
-+ we PUT a modified movie with an `imdbID` that already exists on the server - that's an update
-+ we PUT a new movie with an `imdbID` that does not yet exists - that's a creation.
+Storing the data involves two use cases (although at the moment we only use one, but already test for both):
++ we PUT a modified movie with an `imdbID` that already exists on the server - that's an update, see **3.1.**
++ we PUT a new movie with an `imdbID` that does not yet exists - that's a creation, see **3.2.**
 
 For both cases, you need to add a new endpoint in `server.js`, the `PUT /movies/:imdbID` endpoint.
 
 **3.1.** The Update
 
-Now you check whether the `imdbID` given in the request alredy exists. If it does you **replace** the existing movie data on the server and send back a status code 200 using 
+Now you check whether the `imdbID` given in the request already exists. If it does you **replace** the existing movie data on the server and send back a status code 200 using 
 
 ```js
 res.sendStatus(...)
@@ -252,6 +254,6 @@ If your checks finds that the `imdbID` does not exist, then you **add** the movi
 
 **3.3.** Trigger the PUT on the client side
 
-On the client side, in function `putMovie()` in `edit.js`, you will need to send the movie data that `getMovie()` collects from the form to the newly creates endpoint `PUT /movies/:imdbID`. Some code is already there, but you will have to find the missing pieces on yourself!
+On the client side, in function `putMovie()` in `edit.js`, you will need to send the movie data that `getMovie()` collects from the form to the newly creates endpoint `PUT /movies/:imdbID`. Some code is already there, but you will have to find the missing pieces by yourself!
 
 You have finished the second exercise: **Congratulations, all tests pass!** 

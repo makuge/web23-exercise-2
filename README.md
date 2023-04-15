@@ -79,7 +79,7 @@ Use the configured test specification file `cypress/e2e/assessment.cy.js` to run
 
 Here is what you need to do for the three subtasks to pass:
 
-**1.1.** Instead of storing the movies in an array, store them in a JavaScript object. Use the `imdbID` as key and the array with all the movie data from the first exercise as value, e.g., one property of your movies object might look like this:
+**1.1. In `movie-model.js`.** Instead of storing the movies in an array, store them in a JavaScript object. Use the `imdbID` as key and the array with all the movie data from the first exercise as value, e.g., one property of your movies object might look like this:
 ```js
   tt0084787: {
     imdbID: `tt0084787`,
@@ -101,9 +101,9 @@ Here is what you need to do for the three subtasks to pass:
  
  Refer to the material in the Moodle course for details.
 
-**1.2.** Re-implement the endpoint `GET /movies` that you already are familiar with from the first exercise. Make sure you return all the movies of the model as an array. This can be accomplished using [Object.values(...)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Object/values).
+**1.2. In `server.js`.** Re-implement the endpoint `GET /movies` that you already are familiar with from the first exercise. Make sure you return all the movies of the model as an array. This can be accomplished using [Object.values(...)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Object/values).
 
-**1.3.** Copy the code you wrote in exercise 1 to render the elements to the right place in `index.js`, then you should be fine.
+**1.3. In `index.js`.** Copy the code you wrote in exercise 1 to render the elements to the right place in `index.js`, then you should be fine.
 
 **Caution:** For this test to pass, you will have to extend your code from exercise 1 to render the `Edit` button that is described in Subtask 2.2. The `button` does not have to do anything just yet, but it has to exist for this test to pass...
 
@@ -111,7 +111,7 @@ Here is what you need to do for the three subtasks to pass:
 
 In the second task we add a form to edit an individual movie. For this to work, we first need a way to request an individual movie from the server.
 
-**2.1.** Implement the `GET /movies/:imdbID` endpoint. Here we work with a **path parameter** for the first time. 
+**2.1. In `server.js`.** Implement the `GET /movies/:imdbID` endpoint. Here we work with a **path parameter** for the first time. 
 
 The client passes the `imdbId` of the movie as a path parameter named `imdbID` in the corresponding endpoint in `server.js`. Now you can access the parameter in your endpoint code using `reg.params.imdbID`, using it to look up the requested movie in the movie model.
 
@@ -119,7 +119,7 @@ Depending on whether you find the movie with the given `imdbID` in the model, yo
 + find the movie. Send it to the client using `res.send(...)`
 + do **not** find the movie. Send back a status code of 404 using `res.sendStatus(404)`
 
-**2.2.** Navigate between `index.html` and `edit.html`.
+**2.2. In `index.html` and `edit.html`.** Navigate between `index.html` and `edit.html`.
 
 For this to work, you will have to
 + add a button for each movie on the overview page (`index.html`) that triggers the navigation to the `edit.html` page for that specific movie and 
@@ -157,7 +157,7 @@ To satisfy the test, please make sure to wrap the `button` element in a `p` and 
 
 In the other direction, that is, from the `edit.html` back to `index.html` you can use the same concept. Here, your HTML code is static and there is no need for a parameter, so it's simpler. Still, you have to add a `button` element to `edit.html` with the Text *Cancel* and a `onclick` attribute containing the navigation code.
 
-**2.3.** Now you extend the HTML page `edit.html` that you added in **2.2.**
+**2.3.  In `edit.html`.** Now you extend the HTML page `edit.html` that you added in **2.2.**
 
 You add a `form` element (and move the *Cancel* `button` inside the form). Now you will add elements for all the properties of a movie to that `form` element. A form contains different HTML elements. In our case, we are going to use
 + `input` elements for strings, numbers, dates, and also for the lists we have of actors, writers and directors,
@@ -230,7 +230,7 @@ Finally, you will have to include `edit.js` in `edit.html` to actually load the 
 
 If everything is set up correctly, the movie data should now be shown in the form :).
 
-**2.4** Make sure to reference the given `edit.css` file in `edit.html` to make this subtask work.
+**2.4  In `edit.html`.** Make sure to reference the given `edit.css` file in `edit.html` to make this subtask work.
 
 ### Task 3: Store the modified movie data on the server
 
@@ -240,7 +240,7 @@ Storing the data involves two use cases (although at the moment we only use one,
 
 For both cases, you need to add a new endpoint in `server.js`, the `PUT /movies/:imdbID` endpoint.
 
-**3.1.** The Update
+**3.1.  In `server.js`.** The Update
 
 Now you check whether the `imdbID` given in the request already exists. If it does you **replace** the existing movie data on the server and send back a status code 200 using 
 
@@ -248,11 +248,11 @@ Now you check whether the `imdbID` given in the request already exists. If it do
 res.sendStatus(...)
 ```
 
-**3.2.** The Creation
+**3.2.  In `server.js`.** The Creation
 
 If your checks finds that the `imdbID` does not exist, then you **add** the movie data given in the request to the server-side data model. In this case, you send back status code 201 and the movie object you stored.
 
-**3.3.** Trigger the PUT on the client side
+**3.3.  In `edit.js`.** Trigger the PUT on the client side
 
 On the client side, in function `putMovie()` in `edit.js`, you will need to send the movie data that `getMovie()` collects from the form to the newly creates endpoint `PUT /movies/:imdbID`. Some code is already there, but you will have to find the missing pieces by yourself!
 

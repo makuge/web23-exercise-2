@@ -62,10 +62,24 @@ describe("Testing Exercise 2", () => {
   }
 
   function sampleGenreArray(min, max) {
+
+    const indices = [];
+
+    let n = sampleInteger(min, max);
+    do {
+      const i = sampleInteger(0, 23)
+      if (indices.indexOf(i) == -1) {
+        indices.push(i);
+        n--
+      }
+    } while (n > 0)
+
+    indices.sort((a, b) => a-b)
+
     const result = []
 
-    for (let i = 0; i < sampleInteger(min, max); i++) {
-      result.push(GENRES[sampleInteger(0, 23)])
+    for (let index of indices) {
+      result.push(GENRES[index])
     }
 
     return result;
@@ -83,7 +97,7 @@ describe("Testing Exercise 2", () => {
       Title: sampleString(2),
       Released: "1970-01-01",
       Runtime: sampleInteger(30, 180),
-      Genres: sampleGenreArray(3),
+      Genres: sampleGenreArray(1, 3),
       Directors: sampleStringArray(1, 3, 3),
       Writers: sampleStringArray(1, 3, 3),
       Actors: sampleStringArray(1, 3, 3),
@@ -242,38 +256,49 @@ describe("Testing Exercise 2", () => {
         cy.get("input#Title")
           .should("exist")
           .should("have.attr", "type", "text")
-          .should("have.value", movie.Title);
+          .should("have.value", movie.Title)
+          .should("have.attr", "required");
         cy.get("input#Released")
           .should("exist")
           .should("have.attr", "type", "date")
-          .should("have.value", movie.Released);
+          .should("have.value", movie.Released)
+          .should("have.attr", "required");
         cy.get("input#Runtime")
           .should("exist")
           .should("have.attr", "type", "number")
           .should("have.attr", "min", "0")
-          .should("have.value", movie.Runtime);
+          .should("have.value", movie.Runtime)
+          .should("have.attr", "required");
         cy.get("textarea#Plot")
           .should("exist")
           .should("have.attr", "row", "5")
-          .should("have.value", movie.Plot);
+          .should("have.value", movie.Plot)
+          .should("have.attr", "required");
         cy.get("input#Poster")
           .should("exist")
           .should("have.attr", "type", "url")
-          .should("have.value", movie.Poster);
+          .should("have.value", movie.Poster)
+          .should("have.attr", "required");
         cy.get("input#Metascore")
           .should("exist")
           .should("have.attr", "type", "number")
           .should("have.attr", "min", "0")
           .should("have.attr", "max", "100")
-          .should("have.value", movie.Metascore);
+          .should("have.value", movie.Metascore)
+          .should("have.attr", "required");
         cy.get("input#imdbRating")
           .should("exist")
           .should("have.attr", "type", "number")
           .should("have.attr", "min", "0")
           .should("have.attr", "max", "10")
           .should("have.attr", "step", "0.1")
-          .should("have.value", movie.imdbRating);
-        cy.get("select#Genres").should("exist").should("have.attr", "multiple");
+          .should("have.value", movie.imdbRating)
+          .should("have.attr", "required");
+        cy.get("select#Genres")
+          .should("exist")
+          .should("have.attr", "multiple");
+        cy.get("select#Genres")
+          .should("have.attr", "required");
 
         cy.get("select#Genres>option")
           .should("exist")
@@ -298,15 +323,18 @@ describe("Testing Exercise 2", () => {
         cy.get("input#Directors")
           .should("exist")
           .should("have.attr", "type", "text")
-          .should("have.value", movie.Directors.join(","));
+          .should("have.value", movie.Directors.join(","))
+          .should("have.attr", "required");
         cy.get("input#Writers")
           .should("exist")
           .should("have.attr", "type", "text")
-          .should("have.value", movie.Writers.join(","));
+          .should("have.value", movie.Writers.join(","))
+          .should("have.attr", "required");
         cy.get("input#Actors")
           .should("exist")
           .should("have.attr", "type", "text")
-          .should("have.value", movie.Actors.join(","));
+          .should("have.value", movie.Actors.join(","))
+          .should("have.attr", "required");
 
         for (const formElement of formElements) {
           if (formElement.type === "hidden" || formElement.type === "button" ) continue;

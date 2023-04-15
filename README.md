@@ -220,7 +220,7 @@ Here are some more details:
     The `textarea`, like `input` and `select` elements is wrapped in a `div` element and has its own `label`.
 
 There is one last missing puzzle piece, the buttons. There are two of them at the end of the form:
-+ The *Save* `button` is going to call the JavaScript function `putMovie()`, when the `click` event is fired. Therefore your will need the `onclick` attribute again. **Also be sure to set the `type` attribute to `button` or else your button is going to behave as a submit button, which we don't want in this context.**
++ The *Save* `button` is going to call the JavaScript function `putMovie()`, when the `click` event is fired. Therefore your will need the `onclick` attribute again. **Also be sure to set the `type` attribute to `button` or else your button is going to behave like a submit button, which we don't want in this context.**
 + The *Cancel* `button` is already there.
 
 **To make the test pass, you will have to include `edit.js` in `edit.html` to actually load the movie data from the server and set it to the form!**

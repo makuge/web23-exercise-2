@@ -25,21 +25,21 @@ in your terminal. Navigate to [http://localhost:3000/](http://localhost:3000/) t
 ## Project structure
 
 Since the first exercise, the application has grown. The server-side now consists of two files:
+
 + `server/server.js` containing the start up code and the endpoints,
 + `server/movie-model.js` will contain the data structure in which the movies are held.
 
 On the client-side you will find:
+
 + `server/files/index.html` the overview page showing all movies,
 + `server/files/index.js` now holds the JavaScript code of `index.html`
 + `server/files/index.css` containing the stylesheet for `index.html` file.
-+ `server/files/base.css` contains a base stylesheet, which is used in `index.css`
-+ `server/files/edit.css` is ready for you to use in the new file `server/files/edit.html` and contains some styling for the `form` 
++ `server/files/edit.css` is ready for you to use in `server/files/edit.html` and contains some styling for the `form` 
 + `server/files/edit.js` holds the JavaScript code for `edit.html`, most of which already exists.
++ `server/files/base.css` contains a base stylesheet, which is used in `index.css` and in `edit.css`
 
 ## Tasks
-Here are the details for the three tasks. First off, as already mentioned, the tasks now have subtasks, the first one has three subtasks, the second one four, and the third one again three subtasks.
-
-Here is a first overview of what the three tasks entail, a detailed description can be found in the corresponding sections below.
+Here is a first overview of what the three tasks entail, a detailed description for each subtask can be found in corresponding sections below. 
 
 1. In the first task we are going to change the way in which the movies are held on the server. We move the movie data to the movie model module `server/movie-model.js`. Also, we will have to re-implement the endpoint that we already used in exercise 1, `GET /movies`, to adapt to the introduced created movie module.
 

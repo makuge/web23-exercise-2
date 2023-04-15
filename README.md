@@ -103,9 +103,11 @@ Here is what you need to do for the three subtasks to pass:
 
 **1.2. In `server.js`.** Re-implement the endpoint `GET /movies` that you already are familiar with from the first exercise. Make sure you return all the movies of the model as an array. This can be accomplished using [Object.values(...)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Object/values).
 
-**1.3. In `index.js`.** Copy the code you wrote in exercise 1 to render the elements to the right place in `index.js`, then you should be fine.
+**1.3. In `index.js`.** First, insert the code you wrote in exercise 1 to render the elements to `index.js`.
 
-**Caution:** For this test to pass, you will have to extend your code from exercise 1 to render the `Edit` button that is described in Subtask 2.2. The `button` does not have to do anything just yet, but it has to exist for this test to pass...
+But for this test to pass, you will have to extend your code from exercise 1 to also add the *Edit* button that will be used in Subtask 2.2. The `button` does not have to do anything just yet, but it has to exist for this test to pass.
+
+The `button` element necessary has *Edit* as its text and is wrapped in a `p` element. You have to append it right after the `h1` element (which contains the title of the film) to the `article` element to pass this test.
 
 ### Task 2: Add a form to edit a movie
 
@@ -117,15 +119,16 @@ The client passes the `imdbId` of the movie as a path parameter named `imdbID` i
 
 Depending on whether you find the movie with the given `imdbID` in the model, you do two things: Either you
 + find the movie. Send it to the client using `res.send(...)`
-+ do **not** find the movie. Send back a status code of 404 using `res.sendStatus(404)`
++ do **not** find the movie. Send back a status code of 404 using `res.sendStatus(...)`
 
 **2.2. In `index.html` and `edit.html`.** Navigate between `index.html` and `edit.html`.
 
 For this to work, you will have to
-+ add a button for each movie on the overview page (`index.html`) that triggers the navigation to the `edit.html` page for that specific movie and 
-+ create the `edit.html` page where you add another button triggering navigation back to the `index.html`. For details refer to the end of this section!
 
-Navigating to another URL can be done using the following JavaScript snippet:
++ add a click handler to the *Edit* buttons of the movies on the overview page (`index.html`). This handler triggers the navigation to the `edit.html` page of a specific movie and 
++ create the `edit.html` page where you add another button triggering navigation back to the `index.html`. More details at the end of this section!
+
+Navigating to another URL can be done in JavaScript using the following snippet:
 
 ```js
     location.href = "edit.html?imdbID=tt1234567"
@@ -133,7 +136,7 @@ Navigating to another URL can be done using the following JavaScript snippet:
 
 In this example, the key-value pair after the page name (`imdbID=tt1234567`) is a [query parameter](https://en.wikipedia.org/wiki/Query_string), that we pass to the `edit.html` page. We will later use that parameter to load the movie with the specified id - in this example `tt1234567`.
 
-The tricky part for now is that you will have to add this code dynamically to a `button` element in your DOM manipulation code from exercise 1.
+The tricky part for now is that you will have to add this code dynamically to the *Edit* `button` element in your DOM manipulation code that you added in Subtask 1.3.
 
 This then will look something like this:
 ```js
@@ -141,19 +144,16 @@ This then will look something like this:
 const movie = ... // The movie you are currently adding element for
 const articleElement = ... // The article element you created for that movie
 
-// New code starting here
+// New code starting here (Tasks 1.3 and 2.2)
 const buttonElement = document.createElement('button')
 buttonElement.textContent = 'Edit'
 buttonElement.onclick = function() {
     location.href = 'edit.html?imdbID=' + movie.imdbID
 }
 
-/*... and then you wrap the button element in a p element and 
-      add the p element after the h1 element that contains
-      the movie's title...*/
+/*... you will already have wrapped the button in a p element
+      and added it to the article element after the h1 element */
 ```
-
-To satisfy the test, please make sure to wrap the `button` element in a `p` and add this paragraph right after the `h1` element which contains the title of the movie.
 
 In the other direction, that is, from the `edit.html` back to `index.html` you can use the same concept. Here, your HTML code is static and there is no need for a parameter, so it's simpler. Still, you have to add a `button` element to `edit.html` with the Text *Cancel* and a `onclick` attribute containing the navigation code.
 
@@ -196,8 +196,6 @@ Here are some more details:
 
     A special case is the `input` element for the `imdbID`. Since the user is not going to be able to edit the `imdbID`, we will use `type="hidden"`. Because the element is not visible, there is also no need for a `div` and a `label`, but be sure to add the `id` attribute.
 
-    See the Moodle course for additional material on how to use a `form`.
-
 + We are only going to use one `select` element, namely for the list of genres. For each genre, the `select` element will contains an `option` child element. The `select` element has not `type` attribute like the `input` element, but you need to configure the `id` attribute on this element also. 
 
     Add the following 24 genres as options: `Action`, `Adventure`, `Animation`, `Biography`, `Comedy`, `Crime`, `Documentary`, `Drama`, `Family`, `Fantasy`, `Film Noir`, `History`, `Horror`, `Music`, `Musical`, `Mystery`, `Romance`, `Sci-Fi`, `Short Film`, `Sport`, `Superhero`, `Thriller`, `War`, `Western`.<br>
@@ -224,9 +222,9 @@ There is one last missing puzzle piece, the buttons. There are two of them at th
 + The *Save* `button` is going to call the JavaScript function `putMovie()`. You will need to use the `onclick` attribute again.
 + The *Cancel* `button` is already there.
 
-So much for the construction of the form.
-
 Finally, you will have to include `edit.js` in `edit.html` to actually load the movie data from the server and set it to the form!
+
+**See the Moodle course for additional material on how to construct a `form`.**
 
 If everything is set up correctly, the movie data should now be shown in the form :).
 

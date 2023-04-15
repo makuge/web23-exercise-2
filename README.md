@@ -107,7 +107,7 @@ Here is what you need to do for the three subtasks to pass:
 
 But for this test to pass, you will have to extend your code from exercise 1 to also add the *Edit* button that will be used in Subtask 2.2. The `button` does not have to do anything just yet, but it has to exist for this test to pass.
 
-The `button` element necessary has *Edit* as its text and is wrapped in a `p` element. You have to append it right after the `h1` element (which contains the title of the film) to the `article` element to pass this test.
+The `button` element necessary has *Edit* as its text, a `type` attribute with the value `button` and is wrapped in a `p` element. You have to append it right after the `h1` element (which contains the title of the film) to the `article` element to pass this test.
 
 ### Task 2: Add a form to edit a movie
 
@@ -172,6 +172,7 @@ Here are some more details:
     + choose an appropriate `type` attribute, e.g., `hidden`, `text`, `number`, `url` or `date`
     + set the `id` attribute of the element, for which you use the name of the property as **id**. 
     + for numerical `input` elements you may also need add the attributes `min`, `max`, and, if necessary, `step`.
+    + set the boolean `required` attribute (all our fields are required)
 
     Examples for `input` elements are: 
     ```html
@@ -211,20 +212,18 @@ Here are some more details:
     </select>
     ```
 
-    As you see, the `select` element also has the `multiple` boolean attribute, meaning that the user can select more than one genre.
+    As you see, the `select` element also has the `multiple` boolean attribute, meaning that the user can select more than one genre. And: make it `required`!
 
     Wrap the `select` element in a `div` and add a `label` as we did with the `input` elements.
-+ Finally, there is one `textarea` for the `Plot` property. It also has no `type`, but you will need the `id` as with the other elements. In addition, include a `row` attribute and assign a value of **5**.
++ Finally, there is one `textarea` for the `Plot` property. It also has no `type`, but you will need the `id` as with the other elements. In addition, include a `row` attribute and assign a value of **5**. Like the other input elements, the `textarea` is also `required`.
 
     The `textarea`, like `input` and `select` elements is wrapped in a `div` element and has its own `label`.
 
 There is one last missing puzzle piece, the buttons. There are two of them at the end of the form:
-+ The *Save* `button` is going to call the JavaScript function `putMovie()`. You will need to use the `onclick` attribute again.
++ The *Save* `button` is going to call the JavaScript function `putMovie()`, when the `click` event is fired. Therefore your will need the `onclick` attribute again. **Also be sure to set the `type` attribute to `button` or else your button is going to behave as a submit button, which we don't want in this context.**
 + The *Cancel* `button` is already there.
 
-Finally, you will have to include `edit.js` in `edit.html` to actually load the movie data from the server and set it to the form!
-
-**See the Moodle course for additional material on how to construct a `form`.**
+**To make the test pass, you will have to include `edit.js` in `edit.html` to actually load the movie data from the server and set it to the form!**
 
 If everything is set up correctly, the movie data should now be shown in the form :).
 

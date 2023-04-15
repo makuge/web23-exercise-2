@@ -5,9 +5,9 @@ window.onload = function () {
     if (xhr.status == 200) {
       const movies = JSON.parse(xhr.responseText);
       for (const movie of movies) {
-        /* Task 1.3. 
-           Add your code from exercise 1 here and include a 
-           non-functional 'Edit' button to pass this test */
+        /* Task 1.3. Add your code from exercise 1 here 
+           and include a non-functional 'Edit' button
+           to pass this test */
       }
 
     } else {

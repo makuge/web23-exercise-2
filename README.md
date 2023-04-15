@@ -41,7 +41,7 @@ On the client-side you will find:
 ## Tasks
 Here is a first overview of what the three tasks entail, a detailed description for each subtask can be found in corresponding sections below. 
 
-1. In the first task we are going to change the way in which the movies are held on the server. We move the movie data to the movie model module `server/movie-model.js`. Also, we will have to re-implement the endpoint that we already used in exercise 1, `GET /movies`, to adapt to the introduced created movie module.
+1. In the first task we are going to change the way in which the movies are held on the server. We move the movie data to the movie model module `server/movie-model.js`. Also, we will have to re-implement the endpoint that we already used in exercise 1, `GET /movies`, to adapt to the newly introduced movie module.
 
 2. In the second task you will code your first `form`. This is the biggest of the three tasks. In our form, the user will be able to edit the data of one specific movie. 
     
@@ -49,12 +49,12 @@ Here is a first overview of what the three tasks entail, a detailed description 
     
     Then, you will add navigation from the overview page `index.html` to the edit page `edit.html`. This navigation is triggered when the user clicks the `Edit` button of a movie.
 
-    Finally, we will add the `Save` and `Cancel` buttons. The `Save` button will be implemented in task 3 (for the moment it does nothing), the `Cancel` button navigates back to `index.html`, our movie overview page.
+    Finally, we will add the `Save` and `Cancel` buttons to the edit page. The `Save` button will be implemented in task 3 (for the moment it does nothing), the `Cancel` button navigates back to `index.html`, our movie overview page.
 
-3. The third task finally adds the code to update the movie data modified by the user. This is triggered when the user clicks the `Save` button in our movie form. Saving a modified movie involves another endpoint on the server, the `PUT /movies:/imdbID` endpoint, which you will also implement.
+3. The third task finally adds the code to update the movie data modified by the user. This is triggered when the user clicks the `Save` button in our movie form. Saving a modified movie involves another endpoint on the server, the `PUT /movies:/imdbID` endpoint, which you will implement in this task.
 
 ### Checking your implementation
-As in exercise 1, to check whether your implementation is working as expected you **run** Cypress end-to-end tests. These tests are the exact same tests we will use to assess your implementation once you commit it to the GitHub repository. In this exercise there are a total of 10 tests, each for one of the subtasks.
+As in exercise 1, to check whether your implementation is working as expected, you **run** Cypress end-to-end tests. These tests are the exact same tests we will use to assess your implementation once you commit it to the GitHub repository. In this exercise there are a total of 10 tests, each for one of the subtasks.
 
 To start the tests, run
 
@@ -62,7 +62,7 @@ To start the tests, run
 
 Here is the scheme we will use to award the points:
 
-+ 1.1. 1.1. movie-model.js exports the movies object containing at least 3 movies: **0.4 points**
++ 1.1. movie-model.js exports the movies object containing at least 3 movies: **0.4 points**
 + 1.2. GET endpoint /movies returns at least three correctly formatted movies: **0.4 points**
 + 1.3. Movie overview rendering is correct: **0.2 points**
 + 2.1. GET endpoint /movies/:imdbID returns correctly formatted movie data: **0.2 points**

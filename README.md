@@ -109,6 +109,8 @@ But for this test to pass, you will have to extend your code from exercise 1 to 
 
 The `button` element necessary has *Edit* as its text, a `type` attribute with the value `button` and is wrapped in a `p` element. You have to append it right after the `h1` element (which contains the title of the film) to the `article` element to pass this test.
 
+Finally, make sure that the `article` element that represents a movie has its IMDB id set as its `id` attribute. We are going to need that later when editing movies.
+
 ### Task 2: Add a form to edit a movie
 
 In the second task we add a form to edit an individual movie. For this to work, we first need a way to request an individual movie from the server.

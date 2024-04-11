@@ -16,7 +16,7 @@ or using `nodemon` (the **recommended** option)
 
     npm run start-nodemon
 
-to start the server. In any case the server will be running on port 3000. You should see the message
+to start the server. In any case, the server will be running on port 3000. You should see the message
 
     Server now listening on http://localhost:3000/
 
@@ -97,7 +97,7 @@ Here is what you need to do for the three subtasks to pass:
     imdbRating: 8.2,
   }
 ```
- Make sure to `export` the complete movie object from the `movie-model.js` module, so that `server.js` is able to find it. The import of the `movie-model.js` is already included in the skeleton code. 
+ Make sure to `export` the complete movie object from the `movie-model.js` module, so that the `server.js` is able to find it. The import of the `movie-model.js` is already included in the skeleton code. 
  
  Refer to the material in the Moodle course for details.
 
@@ -166,7 +166,7 @@ You add a `form` element (and move the *Cancel* `button` inside the form). Now y
 
 In contrast to what we did in exercise 1, this time you write your HTML code **statically**, you do not create it using `document.createElement(...)` and `...append(...)`.
 
-Here are some more details:
+Below are some more details:
 
 + For the `input` elements to work properly, you will have to 
     + choose an appropriate `type` attribute, e.g., `hidden`, `text`, `number`, `url` or `date`
@@ -223,9 +223,9 @@ There is one last missing puzzle piece, the buttons. There are two of them at th
 + The *Save* `button` is going to call the JavaScript function `putMovie()`, when the `click` event is fired. Therefore your will need the `onclick` attribute again. **Also be sure to set the `type` attribute to `button` or else your button is going to behave like a submit button, which we don't want in this context.**
 + The *Cancel* `button` is already there.
 
-**To make the test pass, you will have to include `edit.js` in `edit.html` to actually load the movie data from the server and set it to the form!**
+**To make the test pass, you will have to include `edit.js` in `edit.html` to load the movie data from the server and set it to the form!**
 
-If everything is set up correctly, the movie data should now be shown in the form :).
+If everything is set up correctly, the movie data should now be shown in the form 😃.
 
 **2.4  In `edit.html`.** Make sure to reference the given `edit.css` file in `edit.html` to make this subtask work.
 
